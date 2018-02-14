@@ -1,6 +1,6 @@
 public class Main {
 
-    public static final int N = 14;
+    public static final int N = 16;
 
     public static int[] A = new int[N];
     public static int millorDiferenci = Integer.MIN_VALUE;
@@ -8,6 +8,7 @@ public class Main {
     public static int millorMax = -1;
 
     public static void main(String[] args) {
+        System.out.println("Hello World!");
         A[0] = -2;
         A[1] = 0;
         A[2] = 5;
@@ -22,6 +23,8 @@ public class Main {
         A[11] = -3;
         A[12] = -6;
         A[13] = -8;
+        A[14] = 1;
+        A[15] = 0;
 
         System.out.println(solucio(0, A.length -1).toString());
     }
