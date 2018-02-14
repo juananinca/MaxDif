@@ -1,13 +1,17 @@
 public class Pista {
-    int min;
-    int max;
+    int minRelatiu;
+    int minAbsolut;
+    int maxRelatiu;
+    int maxAbsolut;
 
-    public Pista(int min, int max) {
-        this.min = min;
-        this.max = max;
+    public Pista(int minRelatiu, int maxRelatiu, int minAbsolut,  int maxAbsolut) {
+        this.minRelatiu = minRelatiu;
+        this.minAbsolut = minAbsolut;
+        this.maxRelatiu = maxRelatiu;
+        this.maxAbsolut = maxAbsolut;
     }
 
     public String toString() {
-        return "min: " + this.min + ", max: " + this.max;
+        return "minRelatiu: " + this.minRelatiu + ", maxRelatiu: " + this.maxRelatiu + ".";
     }
 }
