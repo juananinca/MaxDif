@@ -8,7 +8,6 @@ public class Main {
     public static int millorMax = -1;
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         A[0] = -2;
         A[1] = 0;
         A[2] = 5;
