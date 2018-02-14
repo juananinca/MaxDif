@@ -8,7 +8,7 @@ public class Main {
     public static int millorMax = -1;
 
     public static void main(String[] args) {
-        A[0] = 100;
+        A[0] = -11;
         A[1] = 0;
         A[2] = 5;
         A[3] = -4;
@@ -45,14 +45,15 @@ public class Main {
             Pista pistaEsquerra = solucio(i0, ((i1-i0)/2)+i0);
             Pista pistaDreta = solucio(((i1-i0)/2)+i0+1, i1);
 
+            // Actualitzam es relatius ara que feim s'unio de conjunts
             if (A[pistaDreta.maxAbsolut] > A[pistaDreta.maxRelatiu]) {
                 pistaDreta.maxRelatiu = pistaDreta.maxAbsolut;
             }
-
             if (A[pistaEsquerra.minAbsolut] < A[pistaEsquerra.minRelatiu]) {
                 pistaEsquerra.minRelatiu = pistaEsquerra.minAbsolut;
             }
 
+            // Miram si sa maxima diferencia es amb es min esquerra o amb es max esquerra
             if (A[pistaDreta.maxRelatiu] - A[pistaEsquerra.minRelatiu] > millorDiferenci) {
                 millorDiferenci = A[pistaDreta.maxRelatiu] - A[pistaEsquerra.minRelatiu];
                 millorMinim = pistaEsquerra.minRelatiu;
@@ -63,57 +64,18 @@ public class Main {
                 millorMinim = pistaEsquerra.maxRelatiu;
                 millorMax = pistaDreta.maxRelatiu;
             }
-            if (A[pistaDreta.minRelatiu] - A[pistaEsquerra.minRelatiu] > millorDiferenci) {
-                millorDiferenci = A[pistaDreta.minRelatiu] - A[pistaEsquerra.minRelatiu];
-                millorMinim = pistaEsquerra.minRelatiu;
-                millorMax = pistaDreta.minRelatiu;
-            }
-            if (A[pistaDreta.minRelatiu] - A[pistaEsquerra.maxRelatiu] > millorDiferenci) {
-                millorDiferenci = A[pistaDreta.minRelatiu] - A[pistaEsquerra.maxRelatiu];
-                millorMinim = pistaEsquerra.maxRelatiu;
-                millorMax = pistaDreta.minRelatiu;
-            }
 
-            int minAbsolutValue = Integer.MAX_VALUE;
-            int minAbsolutIndex = -1;
-            int maxAbsolutValue = Integer.MIN_VALUE;
-            int maxAbsolutIndex = -1;
+            // Actulitzam Minims i Maxims Absoluts
+            int minAbsolutIndex = pistaEsquerra.minAbsolut;
+            int maxAbsolutIndex = pistaEsquerra.maxAbsolut;
 
-            // Minim absolut
-            if (A[pistaEsquerra.minAbsolut] < minAbsolutValue) {
-                minAbsolutValue = A[pistaEsquerra.minAbsolut];
-                minAbsolutIndex = pistaEsquerra.minAbsolut;
-            }
-            if (A[pistaEsquerra.maxAbsolut] < minAbsolutValue) {
-                minAbsolutValue = A[pistaEsquerra.maxAbsolut];
-                minAbsolutIndex = pistaEsquerra.maxAbsolut;
-            }
-            if (A[pistaDreta.minAbsolut] < minAbsolutValue) {
-                minAbsolutValue = A[pistaDreta.minAbsolut];
+            if (A[pistaDreta.minAbsolut] < A[pistaEsquerra.minAbsolut]) {
                 minAbsolutIndex = pistaDreta.minAbsolut;
             }
-            if (A[pistaDreta.maxAbsolut] < minAbsolutValue) {
-                minAbsolutValue = A[pistaDreta.maxAbsolut];
-                minAbsolutIndex = pistaDreta.minAbsolut;
-            }
-
-            // Maxim absolut
-            if (A[pistaEsquerra.minAbsolut] > maxAbsolutValue) {
-                maxAbsolutValue = A[pistaEsquerra.minAbsolut];
-                maxAbsolutIndex = pistaEsquerra.minAbsolut;
-            }
-            if (A[pistaEsquerra.maxAbsolut] > maxAbsolutValue) {
-                maxAbsolutValue = A[pistaEsquerra.maxAbsolut];
-                maxAbsolutIndex = pistaEsquerra.maxAbsolut;
-            }
-            if (A[pistaDreta.minAbsolut] > maxAbsolutValue) {
-                maxAbsolutValue = A[pistaDreta.minAbsolut];
-                maxAbsolutIndex = pistaDreta.minAbsolut;
-            }
-            if (A[pistaDreta.maxAbsolut] > maxAbsolutValue) {
-                maxAbsolutValue = A[pistaDreta.maxAbsolut];
+            if (A[pistaDreta.maxAbsolut] > A[pistaEsquerra.maxAbsolut]) {
                 maxAbsolutIndex = pistaDreta.maxAbsolut;
             }
+
             return new Pista(millorMinim, millorMax, minAbsolutIndex, maxAbsolutIndex);
         }
     }
