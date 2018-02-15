@@ -8,7 +8,7 @@ public class Main {
     public static int millorMax = -1;
 
     public static void main(String[] args) {
-        A[0] = -11;
+        A[0] = 11;
         A[1] = 0;
         A[2] = 5;
         A[3] = -4;
@@ -57,11 +57,6 @@ public class Main {
             if (A[pistaDreta.maxRelatiu] - A[pistaEsquerra.minRelatiu] > millorDiferenci) {
                 millorDiferenci = A[pistaDreta.maxRelatiu] - A[pistaEsquerra.minRelatiu];
                 millorMinim = pistaEsquerra.minRelatiu;
-                millorMax = pistaDreta.maxRelatiu;
-            }
-            if (A[pistaDreta.maxRelatiu] - A[pistaEsquerra.maxRelatiu] > millorDiferenci) {
-                millorDiferenci = A[pistaDreta.maxRelatiu] - A[pistaEsquerra.maxRelatiu];
-                millorMinim = pistaEsquerra.maxRelatiu;
                 millorMax = pistaDreta.maxRelatiu;
             }
 
